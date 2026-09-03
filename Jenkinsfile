@@ -1,12 +1,6 @@
 pipeline{
     agent any
     stages{
-        stage('Checkout Code'){
-            steps{
-                git branch: 'main',
-                url: 'https://github.com/Abishek-151/RESTFULBOOKER-PERFORMANCE-TEST.git'
-            }
-        }
         stage('Run Jmeter Test'){
             steps{
                 bat '''
