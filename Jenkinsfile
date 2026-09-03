@@ -25,11 +25,12 @@ pipeline{
         stage('Send Email'){
             steps{
                 emailext(
-                    subject: "JMeter Test - ${currentBuild.currentResult}",
-                    body: """JMeter Performance Test Completed.
-                    Build: ${env.BUILD_NUMBER}
-                    Status: ${currentBuild.currentResult}
-                    JMeter HTML report is available in jenkins.
+                    subject: "JMeter Test - Build #${env.BUILD_NUMBER} -$ {currentBuild.currentResult == 'SUCCESS' ? 'Successful!' : 'Failed!'}",
+                    body: """
+                    JMeter Test - Build #${env.BUILD_NUMBER} -$ {currentBuild.currentResult == 'SUCCESS' ? 'Successful!' : 'Failed!'}
+                   Check console output at ${env.BUILD_URL} to view the results.
+                   Build Status: ${currentBuild.currentResult}
+                   JMeter HTML Report is available in Jenkins.
                     """,
                     to: 'abishekn.kiaq@gmail.com'
                     )
