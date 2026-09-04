@@ -22,8 +22,8 @@ pipeline{
                     ])
             }
         }
-        stage('Send Email'){
-            steps{
+        post{
+            always{
                 emailext(
                     subject: 'JMeter Test - Build #' + env.BUILD_NUMBER + '-' + currentBuild.currentResult,
                     body: """
