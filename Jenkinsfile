@@ -18,7 +18,6 @@ pipeline{
                     reportName: 'JMeter Performance Report',
                     keepAll: true,
                     alwaysLinkToLastBuild: true,
-                    allowMissing: false
                     ])
             }
         }
